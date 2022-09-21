@@ -7,7 +7,6 @@
 .title{
     flex:none;/*固定 參考寬度值*/
     width:50%;
-    height:30px;
     font-size:20px;
     display:flex;
     align-items:center;
