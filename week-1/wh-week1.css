@@ -124,7 +124,7 @@
     object使用在img標籤之下
 }*/
 .meet{/* img */
-    background-image: url(IMG_3368.jpg);
+    background-image: url(https://raw.githubusercontent.com/ReineChiu/novice/main/week-1/IMG_3368.jpg);
     background-position:100% 30%;
     background-size: cover;
     width:100%;
