@@ -246,7 +246,8 @@ body{
     }
     .list{
         margin-top: 50px;
-        padding-left:50px;   
+        padding-left:80px;
+        font-size:30px;
     }
     .mobile-menu:hover .menu-box {
         width:100%;/*顯示完後,消失多少*/
