@@ -102,7 +102,7 @@ body{
 }
 .content2{
     position:relative;
-    z-index:-1;
+    z-index:1;
     width:280px;
     height:200px;
     margin-top: 10px;
@@ -242,22 +242,24 @@ body{
     width: 100%;
     height:100%;
     transition: .5s ease;
-}
-.list{
-    margin-top: 50px;
-    margin-left:100px;
-}
-.mobile-menu:hover .menu-box {
-    width:100%;/*顯示完後,消失多少*/
-    left: 50%;
-    /*目前已知left: 50%;在畫面右半邊
-    left:0;滑出頁面在畫面左半邊,中間向左滑出*/
-}
-    .frame{
-        flex-wrap:wrap;
+    z-index:4;
     }
-    .block{
-        flex-wrap:wrap; 
-        width:90%;
+    .list{
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
+    .mobile-menu:hover .menu-box {
+        width:100%;/*顯示完後,消失多少*/
+        left: 50%;
+        /*目前已知left: 50%;在畫面右半邊
+        left:0;滑出頁面在畫面左半邊,中間向左滑出*/
+    }
+        .frame{
+            flex-wrap:wrap;
+        }
+        .block{
+            flex-wrap:wrap; 
+            width:90%;
+        }
 }
