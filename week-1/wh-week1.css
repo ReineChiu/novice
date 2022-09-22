@@ -25,6 +25,7 @@ body{
     align-items:center;
     flex:none;
     width:50%;
+    border:1px solid red;
 }
 .mobile-menu{
     display:none;
@@ -87,12 +88,6 @@ body{
     object-fit: cover;
     object-position: center;
 }
-.img2{
-    width:100%;
-    height:80%;
-    object-fit: cover;
-    object-position: center;
-}
 
 .block2{
     display:flex;
@@ -107,14 +102,24 @@ body{
     width:50%;
 }
 .content2{
-    /*position: relative;*/
     width:280px;
     height:200px;
     margin-top: 10px;
     margin-bottom: 10px;
     background-color:rgb(40, 176, 176); 
 }
-
+.star{
+    position: absolute;
+    right:15px;
+    top:10px;
+    z-index:3;
+}
+.img2{
+    width:100%;
+    height:80%;
+    object-fit: cover;
+    object-position: center;
+}
 .long{
     background-image: url(IMG_0792.jpg);
     background-position:100% 58%;
@@ -188,28 +193,6 @@ body{
     .mobile-menu{
         display:flex;
     }
-    .menu-box{
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 100%;/*向左滑出的物件的起始位置,離左端的距離*/
-    right: 0;
-    background-color:beige;
-    overflow: hidden;
-    width: 100%;
-    height:100%;
-    transition: .5s ease;
-}
-.list{
-    margin-top: 50px;
-    margin-left:80px;
-}
-.mobile-menu:hover .menu-box {
-    width:100%;/*顯示完後,消失多少*/
-    left: 50%;
-    /*目前已知left: 50%;在畫面右半邊
-    left:0;滑出頁面在畫面左半邊,中間向左滑出*/
-}
     .frame{
         flex-wrap:wrap;
     }
