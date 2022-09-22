@@ -245,9 +245,8 @@ body{
     z-index:4;
     }
     .list{
-        display:flex;
-        justify-content:center;
-        align-items:center;
+        margin-top:50px;
+        padding-left:100px;
     }
     .mobile-menu:hover .menu-box {
         width:100%;/*顯示完後,消失多少*/
