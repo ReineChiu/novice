@@ -34,7 +34,6 @@ body{
     width:50%;
 }
 .menu-box{
-    display: block;
     position: absolute;
     bottom: 0;
     left: 100%;/*向左滑出的物件的起始位置,離左端的距離*/
