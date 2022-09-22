@@ -245,8 +245,8 @@ body{
     z-index:4;
     }
     .list{
-        margin-top:50px;
-        padding-left:100px;
+        margin-top: 50px;
+        padding-left:50px;   
     }
     .mobile-menu:hover .menu-box {
         width:100%;/*顯示完後,消失多少*/
