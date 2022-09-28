@@ -18,19 +18,10 @@ def avg(data):
         total=0
         for d in ini_dic:               
             if d.get("manager")==False:
-                #continue
                 count=count+1
                 total=total+d.get("salary")
                 avg=total/count
         print(avg)     
-#for value in data.values():
-#        for n in range(len(value)):
-#            dic=value[n]
-#            print(dic)
-#            if dic["manager"]==True:
-#                continue
-#            print(dic["salary"])
-#x=len(dic)#字典中鍵的總數
 
 avg({"employees":[{"name":"Jhon","salary":30000,"manager":False},
             {"name":"Bob","salary":60000,"manager":True},
@@ -50,9 +41,9 @@ print(result)
 print(result1)
 print(result2)
 
-#func(2)(3, 4) # 你補完的函式能印出 2+(3*4) 的結果 14 
-#func(5)(1, -5) # 你補完的函式能印出 5+(1*-5) 的結果 0 
-#func(-3)(2, 9) # 你補完的函式能印出 -3+(2*9) 的結果 15 
+func(2)(3, 4) # 你補完的函式能印出 2+(3*4) 的結果 14 
+func(5)(1, -5) # 你補完的函式能印出 5+(1*-5) 的結果 0 
+func(-3)(2, 9) # 你補完的函式能印出 -3+(2*9) 的結果 15 
 # 一般形式為 func(a)(b, c) 要印出 a+(b*c) 的結果
 
 #要求四：
@@ -67,7 +58,7 @@ def maxProduct(nums):
             newlist.append(mul)
     print(max(newlist))
 
-# 請用你的程式補完這個函式的區塊 
+
 maxProduct([5, 20, 2, 6]) # 得到 120 
 maxProduct([10, -20, 0, 3]) # 得到 30 
 maxProduct([10, -20, 0, -3]) # 得到 60 
@@ -81,9 +72,7 @@ def twoSum(nums, target):
     x = len(nums)
     
     for i in range(x):
-        #print(nums[i])
         for j in range(i+1,x):
-            #print(j)
            if nums[i]+nums[j] == target:
                 return [i,j]  
 
