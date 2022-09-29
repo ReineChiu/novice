@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title>JavaScript 流程控制：迴圈、迴圈指令statement</title>
+    </head>
+    <body>
+        <script>
+            //要求二：JavaScript 物件與陣列
+            function avg(data){
+                for (const value in data){
+                    ini_dic=data[value];
+                    //console.log(ini_dic); //>>>  印出employees對應的值[{},{},{},{}]
+                    count=0 
+                    total=0
+                    for(let d=0;d<ini_dic.length;d++){
+                        let dic=ini_dic[d]
+                        //console.log(dic)//>>> 分別印出{},{},{},{}
+                        //console.log(dic.manager)//>>>印出manager的值
+                        //注意javascript 對字典(物件)取值語法
+                        if (dic.manager==false){//這裡false是小寫
+                            //continue
+                            count=count+1
+                            total=total+dic.salary
+                            avg=total/count
+                        }
+                    } 
+                    console.log(avg);                  
+                }  
+            }    
+            //
+            avg({
+                "employees":[
+                    {
+                        "name":"John",
+                        "salary":30000,
+                        "manager":false },
+                    {
+                        "name":"Bob",
+                        "salary":60000,
+                        "manager":true },
+                    {
+                        "name":"Jenny",
+                        "salary":50000,
+                        "manager":false },
+                    {
+                        "name":"Tony",
+                        "salary":40000,
+                        "manager":false }
+                ]
+            });
+
+        </script>
+    </body>
+</html> 
