@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title>week2 assignment 要求六</title>
+    </head>
+    <body>
+        <script>
+            function maxZeros(nums){
+                let maxcount = 0; //目前最長連續數(要算的數)的個數
+                let count = 0; //目前連續(要算的數)個數
+                let x = nums.length;
+                for(let i=0;i<x;i++){
+                    //console.log(nums[i]);   //印出[,,,]
+                    if (nums[i] == 0){
+                        count+=1;
+                        maxcount = Math.max(maxcount,count)
+                    }else {
+                        count=0;
+                    } 
+                }
+                console.log(maxcount)      
+            }
+            maxZeros([0, 1, 0, 0]); // 得到 2
+            maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]); // 得到 4 
+            maxZeros([1, 1, 1, 1, 1]); // 得到 0 
+            maxZeros([0, 0, 0, 1, 1]) // 得到 3
+        </script>
+    </body>
+</html>
