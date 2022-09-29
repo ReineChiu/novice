@@ -11,7 +11,7 @@ def maxZeros(nums):
     print(maxcount)
 
 
-maxZeros([0, 1, 0, 0]) # 得到 2
-maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]) # 得到 4 
-maxZeros([1, 1, 1, 1, 1]) # 得到 0 
-maxZeros([0, 0, 0, 1, 1]) # 得到 3
+maxZeros([0, 1, 0, 0]) ## 得到 2
+maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]) ## 得到 4 
+maxZeros([1, 1, 1, 1, 1]) ## 得到 0 
+maxZeros([0, 0, 0, 1, 1]) ## 得到 3
