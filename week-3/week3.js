@@ -1,33 +1,29 @@
 fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json").then(function(response){
         return response.json();
     }).then(function(data){
-        //把已經取得資料,把資料呈現到畫面上
         let result=document.querySelector("#result");
         let clist=data["result"]["results"];
                     
         let site = [];
         let web = [];
         for(let i=0;i<clist.length;i++){
-            let product=clist[i]; //讓資料分別印出，就可以分別處理
+            let product=clist[i]; 
             site.push(product.stitle);
             web.push(product.file)
-        }//console.log(site);//取得(site、web)列表
-        //console.log(typeof web);
+        }
         
         let newImg =[];
         for(let i=0;i<web.length;i++){
-            let strWed=web[i];//讓陣列中的網址變成字串
-            //console.log(typeof strWed); 
-            let newStrWed=strWed.replace("JPG","jpg");//無法用多個分隔符,就把JPG換掉吧
-            let objImg = newStrWed.split("jpg");//當引數為空時，則該方法會把整個字串作為一個元素的陣列返回
+            let strWed=web[i];
+            let newStrWed=strWed.replace("JPG","jpg");
+            let objImg = newStrWed.split("jpg");
             let Img = objImg[0]+"jpg";
-            newImg.push(Img)//newImg 得到所有第一張圖的陣列
+            newImg.push(Img)
         }
 
         let text1 = document.getElementsByClassName("text1");
-        //console.log(text1);
         for (let j = 0 ; j<2 ; j++){
-            for (let i = 0 ; i<2 ; i++){  //欲達成同標籤的文字都被修改，需用for迴圈
+            for (let i = 0 ; i<2 ; i++){  
                 if (i != j){
                     continue;
                 }
@@ -46,7 +42,7 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
         }
         newSite2 = site.slice(4);
         let text3 = document.getElementsByClassName("text3");
-        for (let j = 0 ; j<6 ; j++){//j<6 不是數字似乎會報錯
+        for (let j = 0 ; j<6 ; j++){
             for (let i = 0 ; i<6 ; i++){ 
                 if (i != j){
                     continue;
@@ -64,16 +60,14 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
 
         const image1 = document.createElement("img");
         image1.src = newImg[1];       
-        image1.setAttribute('width', 80); // width in px  
-        image1.setAttribute('height', 50); // height in px   
+        image1.setAttribute('width', 80); 
+        image1.setAttribute('height', 50); 
         const box1 = document.getElementById("box1");
         box1.appendChild(image1);
         
         const image2 = document.createElement("img");
         image2.src = newImg[2];   
         image2.setAttribute("id", "allImage");
-        //image2.setAttribute('height', 100); // height in px
-        //image2.setAttribute('width', 200); // width in px      
         const long = document.getElementById("long");
         long.appendChild(image2);
 
