@@ -1,0 +1,209 @@
+body{
+    margin:0;
+}
+.head{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:30px
+}
+.title{
+    flex:none;/*固定 參考寬度值*/
+    width:50%;  
+}
+.word{
+    font-size:20px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    width:100px;
+    margin-left: 10px;
+}
+.desktop-menu{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    flex:none;
+    width:50%;
+}
+.mobile-menu{
+    display:none;
+    justify-content:flex-end;
+    align-items:center;
+    flex:none;
+    width:50%;
+}
+
+.menu-box{
+    position: absolute;
+    bottom: 0;
+    left: 100%;/*向左滑出的物件的起始位置,離左端的距離*/
+    right: 0;
+    background-color:beige;
+    overflow: hidden;
+    width: 100%;
+    height:100%;
+    transition: .5s ease;
+}
+.list{
+    margin-top: 50px;
+    margin-left:90px;
+    font-size: 28px;
+}
+.mobile-menu:hover .menu-box {
+    width:100%;/*顯示完後,不消失多少*/
+    left: 50%;
+    /*目前已知left: 50%;在畫面右半邊
+    left:0;滑出頁面在畫面左半邊,中間向左滑出*/
+}
+.item{
+    flex:none;
+    width:60px;
+    text-align: center;
+    font-size:20px;
+    margin-right: 10px;
+}
+.welcome{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:300px;
+    margin-bottom:20px ;
+    background-color: rgb(40, 176, 176);
+}
+.text{
+    font-size: 40px;
+}
+
+.frame{
+    display:flex;
+    justify-content:center;
+    align-items:center;  
+}
+.block{
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+    width:580px;
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom: 10px;
+}
+.content{
+    display:flex;
+    justify-content:left;
+    align-items:center;
+    width:100%;
+    height:50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(40, 176, 176);   
+}
+.box{
+    width:80px;
+    height:50px;
+}/*圖片大小不一,差距很小分不清,
+多一層容器,將圖片放入統一大小*/
+.img1{
+    width:80px;
+    height:50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.block2{
+    display:flex;
+    flex-wrap:wrap;/*用來告訴flex「能不能換行」*/
+    justify-content:flex-start;
+    align-items:center;
+    width:50%;
+    height: auto;
+}
+.block3{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    align-items:center;
+    width:50%;
+    height: auto;
+}
+.content2{
+    width: 97%;
+    height:230px;
+    margin-top: 10px;
+}
+.img2{
+    width:100%;
+    height:80%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#allImage {   /* 根據js新建在css的id屬性*/
+    width: 100%;
+    height: 230px;
+    object-fit: cover;  
+    object-position: center;
+}
+.text1{
+    text-align:left;
+    width:300px;
+    font-size:20px;
+    margin-left: 20px;
+}
+.text2box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:97%;
+    height:60px;
+    background-color:rgb(40, 176, 176); 
+}
+.text2{
+    text-align: center;
+    font-size:20px;
+    padding: 15px;
+}
+.text3{
+    text-align: center;
+    font-size:20px;
+    padding: 15px;
+}
+@media (max-width:1250px){
+    .frame{
+        flex-wrap:wrap;   
+    }
+    .block{
+        flex-wrap:wrap; 
+        width:45%;
+        height:100%
+    }
+    .block2{
+        width:100%;
+    }
+    .block3{
+        width:100%;
+    }
+    .content2{
+        width:100%;   
+    } 
+    .text2box{
+        width:100%;   
+    }
+}
+@media (max-width:600px){
+    .desktop-menu{
+        display:none;
+    }
+    .mobile-menu{
+        display:flex;
+    }
+    .frame{
+        flex-wrap:wrap;
+    }
+    .block{
+        flex-wrap:wrap; 
+        width:90%;
+    }
+}
