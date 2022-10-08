@@ -132,7 +132,6 @@ body{
     align-items:center; 
     width: 23%;
     margin: 10px;
-    border: 1px solid black;
 }
 .box:nth-child(1),
 .box:nth-child(2),
