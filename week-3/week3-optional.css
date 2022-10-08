@@ -1,0 +1,268 @@
+body{
+    margin:0;
+}
+.head{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:30px
+}
+.title{
+    flex:none;/*固定 參考寬度值*/
+    width:50%;  
+}
+.word{
+    font-size:20px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    width:100px;
+    margin-left: 10px;
+}
+.desktop-menu{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    flex:none;
+    width:50%;
+}
+.mobile-menu{
+    display:none;
+    justify-content:flex-end;
+    align-items:center;
+    flex:none;
+    width:50%;
+}
+.menu-box{
+    position: absolute;
+    bottom: 0;
+    left: 100%;/*向左滑出的物件的起始位置,離左端的距離*/
+    right: 0;
+    background-color:beige;
+    overflow: hidden;
+    width: 100%;
+    height:100%;
+    transition: .5s ease;
+}
+.list{
+    margin-top: 50px;
+    margin-left:90px;
+    font-size: 28px;
+}
+.mobile-menu:hover .menu-box {
+    width:100%;/*顯示完後,不消失多少*/
+    left: 50%;
+    /*目前已知left: 50%;在畫面右半邊
+    left:0;滑出頁面在畫面左半邊,中間向左滑出*/
+}
+.item{
+    flex:none;
+    width:60px;
+    text-align: center;
+    font-size:20px;
+    margin-right: 10px;
+}
+.welcome{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:300px;
+    margin-bottom:20px ;
+    background-color: rgb(40, 176, 176);
+}
+.welcometext{
+    font-size: 40px;
+}
+/*********************************************** */
+.frame{
+    display:flex;
+    justify-content:center;
+    align-items:center;  
+}
+.content{
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+    max-width:1210px;
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom: 10px;
+}
+.longbox{
+    display:flex;
+    justify-content:left;
+    align-items:center;
+    width:590px;
+    height:50px;
+    margin: 10px;
+    background-color: rgb(40, 176, 176);   
+}
+.sbox{
+    width:80px;
+    height:50px;
+    object-fit: cover;
+    object-position: center;
+}
+.stext{
+    text-align:left;
+    width:300px;
+    font-size:20px;
+    margin-left: 20px;
+}
+/*********************************************** */
+/*********************************************** */
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+    width:100%;
+}
+.block{
+    display:flex;
+    flex-wrap:wrap;/*用來告訴flex「能不能換行」*/
+    justify-content:center;
+    align-items:center;
+    max-width:1220px;
+    height: auto;
+}
+.box{
+    display:none;
+    justify-content:center;
+    align-items:center; 
+    width: 23%;
+    margin: 10px;
+    border: 1px solid black;
+}
+.box:nth-child(1),
+.box:nth-child(2),
+.box:nth-child(3),
+.box:nth-child(4),
+.box:nth-child(5),
+.box:nth-child(6),
+.box:nth-child(7),
+.box:nth-child(8){
+    display:block;
+}
+.imgagebox{
+    width:100%;
+    object-fit: cover;
+    object-position: center;
+}
+.textbox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:60px;
+    background-color:rgb(40, 176, 176); 
+}
+.text{
+    text-align: center;
+    font-size:20px;
+    padding: 10px;
+}
+#loadmore{
+    font-size:30px;
+    padding:15px;
+    margin: 10px;
+    color: antiquewhite;
+    background-color:steelblue;
+}
+#loadmore:hover{
+    background-color:darkkhaki;
+}
+#allImage {   /* 根據js新建在css的id屬性*/
+    display:block;/*標籤下加入 display:block 形成一區塊，消除圖片下方的白條*/
+    width: 100%;
+    height:190px;
+    object-fit: cover;  
+    object-position: center;
+}
+
+@media (max-width:1200px){
+    .content{
+        width:93%;
+    }
+    .container{
+        flex-wrap:wrap;   
+    }
+    .block{
+        width:94%;
+    }
+    .box{
+        width:47.5%;
+    }
+    #allImage {   
+        height:300px;
+    }
+}
+@media (max-width:930px){
+    .content{
+        width:93%;
+    }
+    .container{
+        flex-wrap:wrap;   
+    }
+    .block{
+        width:100%;
+    }
+    .box{
+        width:44%;
+    }
+    #allImage {   
+        height:280px;
+    }
+}
+@media (max-width:830px){
+    .content{
+        width:90%;
+    }
+    .longbox{
+        width:49%;
+    }
+    .container{
+        flex-wrap:wrap;   
+    }
+    .block{
+        width:100%;
+    }
+    .box{
+        width:44%;
+    }
+    #allImage {   
+        height:280px;
+    }
+}
+
+@media (max-width:600px){
+    .desktop-menu{
+        display:none;
+    }
+    .mobile-menu{
+        display:flex;
+    }
+    .frame{
+        flex-wrap:wrap;
+    }
+    .content{
+        flex-wrap:wrap;
+        width: 90%;
+    }
+    .longbox{
+        width:100%;
+    }
+    .container{
+        flex-wrap:wrap;   
+    }
+    .block{
+        flex-wrap:wrap; 
+        width:100%;
+    }
+    .box{
+        width:86%;
+    }
+    #allImage {   
+        height:250px;
+    }
+}
