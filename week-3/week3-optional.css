@@ -123,7 +123,7 @@ body{
     flex-wrap:wrap;/*用來告訴flex「能不能換行」*/
     justify-content:center;
     align-items:center;
-    max-width:1220px;
+    max-width:1227px;
     height: auto;
 }
 .box{
@@ -166,7 +166,7 @@ body{
     flex-wrap:wrap;/*用來告訴flex「能不能換行」*/
     justify-content:center;
     align-items:center;
-    max-width:1220px;
+    max-width:1227px;
     height: auto;
 }
 #newbox{
@@ -202,10 +202,10 @@ body{
         flex-wrap:wrap;   
     }
     .block{
-        width:94%;
+        width:94.5%;
     }
     #block{
-        width:94%;
+        width:100%;
     }
     .box{
         width:47.5%;
@@ -215,29 +215,6 @@ body{
     }
     #allImage {   
         height:300px;
-    }
-}
-@media (max-width:930px){
-    .content{
-        width:93%;
-    }
-    .container{
-        flex-wrap:wrap;   
-    }
-    .block{
-        width:100%;
-    }
-    #block{
-        width:100%;
-    }
-    .box{
-        width:44%;
-    }
-    #newbox{
-        width:44%;
-    }
-    #allImage {   
-        height:280px;
     }
 }
 @media (max-width:830px){
