@@ -204,7 +204,13 @@ body{
     .block{
         width:94%;
     }
+    #block{
+        width:94%;
+    }
     .box{
+        width:47.5%;
+    }
+    #newbox{
         width:47.5%;
     }
     #allImage {   
@@ -221,7 +227,13 @@ body{
     .block{
         width:100%;
     }
+    #block{
+        width:100%;
+    }
     .box{
+        width:44%;
+    }
+    #newbox{
         width:44%;
     }
     #allImage {   
@@ -241,7 +253,13 @@ body{
     .block{
         width:100%;
     }
+    #block{
+        width:100%;
+    }
     .box{
+        width:44%;
+    }
+    #newbox{
         width:44%;
     }
     #allImage {   
@@ -273,7 +291,14 @@ body{
         flex-wrap:wrap; 
         width:100%;
     }
+    #block{
+        flex-wrap:wrap; 
+        width:100%;
+    }
     .box{
+        width:86%;
+    }
+    #newbox{
         width:86%;
     }
     #allImage {   
