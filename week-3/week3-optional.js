@@ -101,7 +101,11 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
                     newbox.appendChild(t)
                 }
             }
-            currentItem += 8;            
+            currentItem += 8;  
+            
+            if(currentItem >=newSite2.length){
+                btn.style.display = "none"
+            }
         });
     }   
 )    
