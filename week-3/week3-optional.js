@@ -10,8 +10,7 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
             let product=clist[i]; 
             site.push(product.stitle);
             web.push(product.file)
-        }
-        
+        }                
         let newImg =[];
         for(let i=0;i<web.length;i++){
             let strWed=web[i];
@@ -20,9 +19,7 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
             let Img = objImg[0]+"jpg";
             newImg.push(Img)
         }
-
-        let stext = document.getElementsByClassName("stext");
-       
+        let stext = document.getElementsByClassName("stext");       
         for (let j = 0 ; j<2 ; j++){
             for (let i = 0 ; i<2 ; i++){  
                 if (i != j){
@@ -30,12 +27,11 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
                 }
                 stext[i].textContent = site[j];    
             }
-        }
-       
+        }       
         newSite1 = site.slice(2);
         let text = document.getElementsByClassName("text");
-        for (let j = 0 ; j<newSite1.length-2 ; j++){
-            for (let i = 0 ; i<newSite1.length-2; i++){ 
+        for (let j = 0 ; j<8 ; j++){
+            for (let i = 0 ; i<8; i++){ 
                 if (i != j){
                     continue;
                 }
@@ -47,20 +43,19 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
         image0.src = newImg[0];       
         image0.setAttribute('width', 80); // width in px  
         image0.setAttribute('height', 50); // height in px    
-        const box = document.getElementById("box");
-        box.appendChild(image0);
+        const sbox = document.getElementById("sbox");
+        sbox.appendChild(image0);
 
         const image1 = document.createElement("img");
         image1.src = newImg[1];       
         image1.setAttribute('width', 80); 
         image1.setAttribute('height', 50); 
-        const box1 = document.getElementById("box1");
-        box1.appendChild(image1);
-        
-
+        const sbox1 = document.getElementById("sbox1");
+        sbox1.appendChild(image1);
+              
         imageList = newImg.slice(2);
-        for (let i=0;i<imageList.length;i++){
-            for (let j=0;j<imageList.length;j++){
+        for (let i=0;i<8;i++){
+            for (let j=0;j<8;j++){
                 if (i != j){
                     continue;
                 }
@@ -72,21 +67,42 @@ fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assi
                 photo.appendChild(image);
             }
         }
+//*****變數宣告的擺放位置要注意，位置不同結果差很多******
         //****loadmore******/
-        let btn = document.querySelector("#loadmore");
-        let boxes = document.querySelectorAll(".box");
-        let currentItem = 8;
+        let newSite2 = site.slice(10);
+        let imageList1 = newImg.slice(10);
+
+        let btn = document.querySelector("#loadmore")
+        let currentItem = 0;
+        
         btn.addEventListener("click",function(){  
+           
+            for (let i=currentItem;i<currentItem+8 ;i++){
+                for (let j=currentItem;j<currentItem+8;j++){
+                    if (i != j){
+                        continue;
+                    }
+                    //*****變數宣告的擺放位置要注意，位置不同結果差很多******
+                    let newblock = document.getElementById("block");
+                    newblock.setAttribute("id", "block");
             
-            for (let i=currentItem; i<currentItem+8; i++){
-                boxes[i].style.display = "block";
+                    let newbox = document.createElement("div");
+                    newbox.setAttribute("id", "newbox");
+                    newblock.appendChild(newbox)
+
+                    let g = document.createElement("img");
+                    g.src = imageList1[i];
+                    g.setAttribute("id", "allImage");
+                    newbox.appendChild(g)
+
+                    let t = document.createElement("div");
+                    t.setAttribute("id", "newtTextbox"); 
+                    t.textContent = newSite2[j]
+                    newbox.appendChild(t)
+                }
             }
-            currentItem +=8;
-            
-            if(currentItem >= boxes.length){
-                btn.style.display = "none";    
-            } 
+            currentItem += 8;            
         });
-    }  
+    }   
 )    
     
