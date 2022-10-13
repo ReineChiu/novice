@@ -3,7 +3,7 @@ from flask import request
 from flask import render_template 
 from flask import redirect 
 from flask import session
-
+from flask import url_for
 app=Flask(__name__)
 
 app.secret_key="any string but secret"
@@ -21,9 +21,9 @@ def signin():
         session["userid"]=userid
         return redirect("/member")
     elif userid=="" or password=="":
-        return redirect("http://127.0.0.1:3000/error?message=請輸入帳號、密碼")
+        return redirect(url_for("error",message="請輸入帳號、密碼"))
     else:
-        return redirect("http://127.0.0.1:3000/error?message=帳號、或密碼輸入錯誤")
+        return redirect(url_for("error",message="帳號、或密碼輸入錯誤"))
    
 @app.route("/member")
 def member():
@@ -41,6 +41,16 @@ def error():
     message=request.args.get("message","")
     return render_template("error.html",message = message)
      
+@app.route("/account")
+def account():
+    num=request.args.get("num")
+    num=int(num)
+    return redirect(url_for("square",num=num))
+
+@app.route("/square/<int:num>")
+def square(num):
+    return render_template("square.html",result =str(num**2))
+    
 
 if __name__ =='__main__':
     app.debug = True
