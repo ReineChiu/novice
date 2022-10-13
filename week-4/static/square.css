@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+}
+.head{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:80px;
+    font-size: 25px;
+    background-color:darkslateblue;
+    color:burlywood;
+}
+.square{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+}
+.goback{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.button{
+    font-size:10px;
+    padding: 10px;
+    margin: 20px;   
+}
+.btn:link{
+    text-decoration:none;
+}
