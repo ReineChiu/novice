@@ -36,3 +36,27 @@ body{
     font-size:10px;
     padding: 10px;
 }
+.square{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 25px;
+}
+.integer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+.int{
+    font-size: 20px;
+}
+.squarebutton{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 15px;
+}
