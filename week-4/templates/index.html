@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8"/>
     <title>Assignment - Week 4</title>
-    <link rel="stylesheet" type="text/css" href="static/index.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
 </head>
 <body>
     <div class="head">歡迎光臨，請輸入帳號密碼</div>
@@ -15,6 +15,12 @@
             <div class="password">密碼 <input class="pw" type="text" name="password"/></div>
             <div class="button"><button class="btn">登入</button></div>
         </div>
+    </form>
+    <hr/>
+    <form action="/account">
+        <div class="square">計算正整數的平方</div>
+        <div class="integer">正整數 <input class="int" type="text" name="num"/></div>
+        <div class="squarebutton"><button class="btn">計算</button></div>
     </form>
 </body>
 </html>
