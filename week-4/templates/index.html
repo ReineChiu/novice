@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <title>Assignment - Week 4</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
+    <script src="{{url_for('static',filename='index.js')}}"></script>
 </head>
 <body>
     <div class="head">歡迎光臨，請輸入帳號密碼</div>
@@ -17,10 +18,12 @@
         </div>
     </form>
     <hr/>
-    <form action="/account">
-        <div class="square">計算正整數的平方</div>
-        <div class="integer">正整數 <input class="int" type="text" name="num"/></div>
-        <div class="squarebutton"><button class="btn">計算</button></div>
-    </form>
+    <div class="square">計算正整數的平方</div>
+    <div class="integer">正整數 
+        <input class="int" type="text" id="num">
+    </div>
+    <div class="squarebutton">
+        <button class="btn" onclick="account()">計算</button>
+    </div>
 </body>
 </html>
