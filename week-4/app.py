@@ -4,7 +4,7 @@ from flask import render_template
 from flask import redirect 
 from flask import session
 from flask import url_for
-app=Flask(__name__)
+app=Flask(__name__,)
 
 app.secret_key="any string but secret"
 
@@ -40,16 +40,12 @@ def sign_out():
 def error():
     message=request.args.get("message","")
     return render_template("error.html",message = message)
-     
-@app.route("/account")
-def account():
-    num=request.args.get("num")
-    num=int(num)
-    return redirect(url_for("square",num=num))
 
-@app.route("/square/<int:num>")
+@app.route("/square/<num>")
 def square(num):
-    return render_template("square.html",result =str(num**2))
+    num=int(num)
+    result =num*num
+    return render_template("square.html",result =result)
     
 
 if __name__ =='__main__':
