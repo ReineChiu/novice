@@ -8,7 +8,7 @@ connection = mysql.connector.connect(
     host= "localhost",
     port= "3306",
     user="root",
-    password="80808080",
+    password="*密碼隱藏馬賽克*",
     database="website"
 )
 
