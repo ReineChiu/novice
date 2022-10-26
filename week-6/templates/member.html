@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Assignment - Week 6 會員登入頁面{% endblock %}
+
+{% block static %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='member.css')}}">
+{% endblock %}
+
+{% block content %}  
+<div class="head">歡迎光臨，請裡是會員頁面</div>
+<form action="/signout">
+    <div class="welcome">{{username}}，歡迎登入系統</div>
+    <div class="button"><button class="btn">登出系統</button></div>
+</form>
+<hr/>
+<form action="/message" method="POST">
+    <div class="message">快來留言吧</div>
+    <div class="content">內容 <input class="mesg" type="text" name="mesgcontent"/></div>
+    <div class="button"><button class="btn" id="sent">送出</button></div>
+</form>
+<hr/>
+{% for i in message %}
+    <div class="newcontent">{{i[0]}}:{{i[1]}}</div>
+{% endfor %}
+</div>
+{% endblock %}
+    

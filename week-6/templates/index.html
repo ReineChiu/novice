@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Assignment - Week 6_MemberSystem{% endblock %}
+
+{% block static %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
+<script src="{{url_for('static',filename='index.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="head">歡迎光臨，請註冊登入系統</div>
+<div class="form">
+    <form action="/signup" method="POST">
+        <div class="login">
+            <div>註冊帳號</div>
+            <div class="bar">
+                <span class="name">姓名<input class="inpname" type="text" name="name"/></span>
+            </div>
+            <div class="bar">
+                <span class="account">帳號 <input class="acc" type="text" name="username"/></span>
+            </div>
+            <div class="bar">  
+                <span class="password">密碼 <input class="psd" type="text" name="password"/></span>
+            </div>
+            <div class="button"><button class="btn">註冊</button></div>
+        </div>
+    </form>
+</div>
+<hr/>
+<div class="form">
+    <form action="/signin" method="POST">
+        <div class="login">
+            <div>登入系統</div>
+            <div class="bar">
+                <span class="account">帳號 <input class="acc" type="text" name="username"/></span>
+            </div>
+            <div class="bar">
+                <span class="password">密碼 <input class="psd" type="text" name="password"/></span>
+            </div>
+            <div class="button"><button class="btn">登入</button></div>
+        </div>
+    </form>
+</div>
+{% endblock %}

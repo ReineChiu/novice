@@ -1,0 +1,32 @@
+body{
+    margin:0;
+}
+.head{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:80px;
+    font-size: 25px;
+    color:#f9f1c0;
+    background-color:#86473f;
+}
+.error{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0 20px 0;
+}
+.goback{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.button{
+    font-size:10px;
+    padding: 10px;
+    margin: 5px;   
+}
+.btn:link{
+    text-decoration:none;
+}

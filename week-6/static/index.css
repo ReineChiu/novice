@@ -1,0 +1,80 @@
+body{
+    margin:0;
+}
+.head{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:80px;
+    font-size: 25px;
+    color:#f9f1c0;
+    background-color:#86473f;
+
+}
+.form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#9ea1a3;
+}   
+.login{
+    display:block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#ebf4f4;
+    margin: 20px 0 20px 0;
+    padding: 30px;
+    background-color:#6f6045;
+}
+
+.name{
+    font-size: 17px;
+    border-radius: 2px;
+    margin-top: 15px;
+    padding: 5px;
+    background-color:#726240;
+    box-shadow: 0 3px 0 0 rgba(0,0,0.1);
+}
+.inpname{
+    font-size: 20px;
+    border-radius: 2px;
+    margin-top: 15px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0.1);
+}
+.account{    
+    font-size: 17px;
+    border-radius: 2px;
+    margin-top: 15px;
+    padding: 5px;
+    background-color:#726240;
+    box-shadow: 0 3px 0 0 rgba(0,0,0.1);
+}
+.acc{
+    font-size: 20px;
+    border-radius: 2px;
+    margin-top: 15px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0.1);
+}
+.password{
+    font-size: 17px;
+    border-radius: 2px;
+    margin-top: 15px;
+    padding: 5px;
+    background-color:#726240;
+    box-shadow: 0 3px 0 0 rgba(0,0,0.1);
+}
+.psd{
+    font-size: 20px;
+    border-radius: 2px;
+    margin-top: 15px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0.1);
+}
+.button{
+    margin-top: 15px;   
+}
+.btn{
+    font-size:10px;
+    padding: 10px;
+    background-color:#7ebeab;
+}
