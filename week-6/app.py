@@ -68,10 +68,10 @@ def member():
 
 @app.route("/message",methods=["POST"])
 def message():
-    mesgcursor=connection.cursor()
     member_id=session["userid"]
     content=request.form["mesgcontent"]
-    mesgcursor.execute("insert into message(member_id, content) values('"+str(member_id)+"', '"+content+"');")
+    mesgcursor=connection.cursor()
+    mesgcursor.execute("insert into message(member_id, content) values({}, '{}');".format(member_id,content))
     mesg = mesgcursor.fetchall()
     connection.commit()
     return redirect(url_for("member"))
