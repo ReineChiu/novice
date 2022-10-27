@@ -1,9 +1,6 @@
 from flask import Flask, request, render_template, redirect, session, url_for
 import mysql.connector
-from mysql_pm import web_select, web_insert
 import os
-from datetime import timedelta
-
 
 app=Flask(__name__,)
 
@@ -14,9 +11,9 @@ connection = mysql.connector.connect(
     password="隱藏ing",
     database="website"
 )
+cursor = connection.cursor()
 
 app.config['SECRET_KEY'] = os.urandom(24)
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
 @app.route("/")
 def index():
@@ -27,13 +24,18 @@ def signup():
     name=request.form["name"]
     user=request.form["username"]
     psd=request.form["password"]
-    account=web_select(username=user)
+    select=("select * from member where username= %(username)s")
+    cursor.execute(select, {"username": user})
+    account=cursor.fetchall()
     if account:
         return redirect(url_for("error",message="帳號已被註冊"))
     elif not name or not user or not psd:
         return redirect(url_for("error",message="姓名、帳號、密碼不能空白"))
     else:
-        web_insert("member",name=name,username=user,password=psd)
+        insert=("insert into member(name, username, password) values(%s, %s, %s)")
+        value=[name, user, psd]
+        cursor.execute(insert, value)
+        connection.commit()
         return redirect("/")
     cursor.close()
     connection.close()
@@ -41,8 +43,11 @@ def signup():
 @app.route("/signin",methods=["POST"])
 def signin():
     user=request.form["username"]
-    psd=request.form["password"]   
-    user=web_select(username=user,password=psd)
+    psd=request.form["password"]
+    select=("select * from member where username= %s")
+    data=[user]
+    cursor.execute(select, data)
+    user=cursor.fetchone()
     if user:
         session["userid"]=user[0]
         session["name"]=user[1]
@@ -70,14 +75,13 @@ def member():
 def message():
     member_id=session["userid"]
     content=request.form["mesgcontent"]
-    mesgcursor=connection.cursor()
-    mesgcursor.execute("insert into message(member_id, content) values({}, '{}');".format(member_id,content))
-    mesg = mesgcursor.fetchall()
+    insert=("insert into message(member_id, content) values(%s, %s)")
+    value=[member_id, content]
+    cursor.execute(insert, value)
     connection.commit()
     return redirect(url_for("member"))
     cursor.close()
     connection.close()    
-
 
 @app.route("/error")
 def error():
