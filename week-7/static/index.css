@@ -1,0 +1,107 @@
+body{
+    margin:0;
+}
+.head{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:80px;
+    font-size: 25px;
+    color:#f9f1c0;
+    background-color:#86473f;
+
+}
+.form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#9ea1a3;
+}   
+.login{
+    display:block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#ebf4f4;
+    margin: 20px 0 20px 0;
+    padding: 30px;
+    background-color:#84a1a8;
+}
+.title{
+    color:black;
+}
+.name{
+    font-size: 17px;
+    border-radius: 2px;
+    margin-top: 15px;
+    padding: 5px;
+    background-color:#6b818e;
+    box-shadow: 0 3px 0 0 rgba(0,0,0.1);
+}
+.inpname{
+    font-size: 20px;
+    border-radius: 2px;
+    margin-top: 15px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0.1);
+}
+.account{
+    width:30%;
+    font-size: 17px;
+    border-radius: 2px;
+    margin-top: 15px;
+    padding: 5px;
+    background-color:#6b818e;
+    box-shadow: 0 3px 0 0 rgba(0,0,0.1);
+}
+input[type=text]{
+    font-size: 10px;
+    padding: 8px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing:border-box;
+    
+    /*-webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;*/
+}
+/*input[type=text]:focus {
+    border: 3px solid #555;
+  }*/
+input[type=password]{
+    font-size: 10px;
+    padding: 8px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing:border-box;
+}
+.acc{
+    font-size: 16px;
+    border-radius: 2px;
+    margin-top: 15px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0.1);
+}
+.password{
+    font-size: 17px;
+    border-radius: 2px;
+    margin-top: 25px;
+    padding: 5px;
+    background-color:#6b818e;
+    box-shadow: 0 3px 0 0 rgba(0,0,0.1);
+}
+.psd{
+    font-size: 20px;
+    border-radius: 2px;
+    margin-top: 15px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0.1);
+}
+.button{
+    margin-top: 15px;   
+}
+.btn{
+    font-size:10px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color:#9ea1a3;
+}

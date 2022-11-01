@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Assignment - Week 6 會員登入頁面{% endblock %}
+
+{% block static %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='member.css')}}">
+<script src="{{url_for('static',filename='member.js')}}"></script>
+{% endblock %}
+
+{% block content %}  
+<div class="head">歡迎光臨，請裡是會員頁面</div>
+<form action="/signout">
+    <div class="welcome">{{username}}，歡迎登入系統</div>
+    <div class="button"><button class="btn">登出系統</button></div>
+</form>
+<hr/>
+<form action="/message" method="POST">
+    <div class="message">快來留言吧</div>
+    <div class="content">內容 <input class="mesg" type="text" name="message_content" placeholder="想說些什麼..." required/></div>
+    <div class="button"><button class="btn" id="sent">送出</button></div>
+</form>
+<hr/>
+{% for i in message %}
+    <div class="newcontent">
+        <div class="block">
+            <div class="user" id="user">{{i[0]}}:</div>
+            <div class="new-mesg">{{i[1]}}</div>
+            <div class="mesg-time">{{i[2]}}</div>
+        </div>
+    </div>
+{% endfor %}
+<hr/>
+<div class="title">查詢會員姓名</div>
+<div class="search">
+    <input class="" type="text" id="searchUsername" placeholder="輸入欲查詢的會員姓名" required/>
+    <div class="button"><button class="btn" onclick="searchData();">查詢</button></div>
+</div>
+<div id="searchResult"></div>
+
+<hr/>
+<div class="title">更新我的姓名</div>
+<div class="search">
+    <input class="" type="text" id="changeName" placeholder="輸入新的姓名" required/>
+    <div class="button"><button class="btn" onclick="changeData();">更新</button></div>
+</div>
+<div id="changeResult"></div>
+{% endblock %}
