@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Assignment - Week 6_MemberSystem{% endblock %}
+
+{% block static %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="head">歡迎光臨，請註冊登入系統</div>
+<div class="form">
+    <form action="/signup" method="POST">
+        <div class="login">
+            <div class="title">註冊帳號</div>
+            <label for="regname" class="name">姓名</label>
+            <input id="regname" class="inpname" type="text" name="name" placeholder="姓名"/><br>
+            <label for="reguser" class="name">帳號</label>
+            <input id="reguser" class="acc" type="text" name="username" placeholder="註冊帳號"/><br>
+            <label for="regpsd" class="name">密碼</label>
+            <input id="regpsd" class="psd" type="password" name="password" placeholder="註冊密碼"/><br>
+            <div class="button"><button class="btn">註冊</button></div>
+        </div>
+    </form>
+</div>
+<hr/>
+<div class="form">
+    <form action="/signin" method="POST">
+        <div class="login">
+            <div class="title">登入系統</div>
+            <label for="loginacc" class="account">帳號</label>
+            <input id="loginacc" class="acc" type="text" name="username" placeholder="輸入帳號" required/><br>
+            <label for="loginpsd" class="password">密碼</label>
+            <input id="loginpsd" class="psd" type="password" name="password" placeholder="輸入密碼"/><br>
+            <div class="button"><button class="btn">登入</button></div>
+        </div>
+    </form>
+</div>
+{% endblock %}
