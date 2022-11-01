@@ -89,9 +89,9 @@ def api_member():
             data = dict(zip(columns, name))
             return json.dumps({"data":data}, ensure_ascii=False)
         else:
-            return json.dumps({"data":None}, ensure_ascii=False)
+            return json.dumps({"data":None})
     else:
-        return json.dumps({"data":None}, ensure_ascii=False)
+        return json.dumps({"data":None})
     
     cursor.close()
     connection.close()
@@ -113,11 +113,11 @@ def patch_member():
         newcursor.execute(select, result)
         newName = newcursor.fetchone()
         if newName:
-            return json.dumps({"ok":True}, ensure_ascii=False)
+            return json.dumps({"ok":True})
         else:
-            return json.dumps({"error":True}, ensure_ascii=False)
+            return json.dumps({"error":True})
     else:
-        return json.dumps({"error":True}, ensure_ascii=False)
+        return json.dumps({"error":True})
     cursor.close()
     connection.close()
 
