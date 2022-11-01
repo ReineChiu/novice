@@ -6,7 +6,7 @@ connection = mysql.connector.connect(
     host = "localhost",
     port = "3306",
     user = "root",
-    password = "隱藏ing",
+    password = "",
     database = "website",
 )
 
@@ -64,7 +64,9 @@ def member():
     if "username" in session:
         username = session["username"]
         messagecursor = connection.cursor()
-        messagecursor.execute("select member.username, message.content, message.time, member.id, message.member_id from member inner join message on member.id=message.member_id order by message.time desc;")
+        messagecursor.execute('''select member.username, message.content, message.time,
+                                member.id, message.member_id from member inner join message 
+                                on member.id=message.member_id order by message.time desc;''')
         message = messagecursor.fetchall()
         return render_template("member.html",username = username,message = message)
     else:
