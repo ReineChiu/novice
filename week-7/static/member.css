@@ -111,6 +111,12 @@ input[type=text]{
     justify-content: center;
     align-items: center;
 }
+#errorUsername{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
 #newUsername{
     display:flex;
     justify-content: center;
