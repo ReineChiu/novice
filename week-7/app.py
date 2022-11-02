@@ -1,10 +1,12 @@
-from flask import Flask, request, render_template, redirect, session, url_for
+from flask import Flask, request, render_template, redirect, session, url_for, jsonify
 import mysql.connector
 import json, os
 from mysql_data import MySQLPassword
 
 app=Flask(__name__,)
 app.config["SECRET_KEY"] = os.urandom(24)
+app.config["JSON_AS_ASCII"] = False
+app.config['JSONIFY_MIMETYPE'] ="application/json;charset=utf-8"
 
 @app.route("/")
 def index():
@@ -86,7 +88,7 @@ def member():
     database = "website",
     )
     if "username" in session:
-        username = session["username"]
+        name = session["name"]
         
         try:
             cursor = connection.cursor()
@@ -94,7 +96,7 @@ def member():
                                     member.id, message.member_id from member inner join message 
                                     on member.id=message.member_id order by message.time desc;''')
             message = cursor.fetchall()
-            return render_template("member.html",username = username,message = message)
+            return render_template("member.html",name = name,message = message)
         except:   
             print("顯示留言失敗")
         finally:
@@ -125,9 +127,9 @@ def api_member():
             if name:
                 columns = [col[0] for col in cursor.description]
                 data = dict(zip(columns, name))
-                return json.dumps({"data":data}, ensure_ascii=False)
+                return jsonify({"data":data})
             else:
-                return json.dumps({"data":None})
+                return jsonify({"data":None})
         except:   
             print("查詢失敗")
         finally:
@@ -135,7 +137,7 @@ def api_member():
             connection.close()
 
     else:
-        return json.dumps({"data":None})
+        return jsonify({"data":None})
 
 @app.route("/api/member", methods=["PATCH"])
 def patch_member():
@@ -148,23 +150,23 @@ def patch_member():
     )
     if "username" in session:
         data = request.get_json("name")
-        name = session["name"]
+        memberId = session["userid"]
         
         try:
             cursor = connection.cursor()
-            update = ("update member set username=%s where name =%s")
-            value = [data["name"], name]
+            update = ("update member set name=%s where id=%s")
+            value = [data["name"], memberId]
             cursor.execute(update, value)
             connection.commit()
 
-            select = ("select * from member where username=%s and name=%s")
-            result  =[data["name"], name]
+            select = ("select * from member where name=%s")
+            result  =[data["name"]]
             cursor.execute(select, result)
             newName = cursor.fetchone()
             if newName:
-                return json.dumps({"ok":True})
+                return jsonify({"ok":True})
             else:
-                return json.dumps({"error":True})
+                return jsonify({"error":True})
         except:   
             print("更新失敗")
         finally:
@@ -172,7 +174,7 @@ def patch_member():
             connection.close()
 
     else:
-        return json.dumps({"error":True})
+        return jsonify({"error":True})
 
 @app.route("/message",methods=["POST"])
 def message():
@@ -207,6 +209,7 @@ def error():
 
 @app.route("/signout", methods=["GET"])
 def signout():
+    #session["loggedin"]=None
     session["userid"] = None
     session["name"] = None
     session["username"] = None
