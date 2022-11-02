@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, redirect, session, url_for, jsonify
 import mysql.connector
-import json, os
+import os
 from mysql_data import MySQLPassword
 
 app=Flask(__name__,)
@@ -209,7 +209,6 @@ def error():
 
 @app.route("/signout", methods=["GET"])
 def signout():
-    #session["loggedin"]=None
     session["userid"] = None
     session["name"] = None
     session["username"] = None
