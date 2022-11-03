@@ -62,7 +62,6 @@ def signin():
         data = [user, password]
         cursor.execute(select, data)
         result = cursor.fetchone()
-      
         if result:
             session["userid"] = result[0]
             session["name"] = result[1]
@@ -91,7 +90,6 @@ def member():
                                     on member.id=message.member_id order by message.time desc;''')
             message = cursor.fetchall()
             return render_template("member.html",name = name,message = message)
-            
         except:   
             print("顯示留言失敗")
         finally:
@@ -118,7 +116,7 @@ def api_member():
                 data = dict(zip(columns, name))
                 return jsonify({"data":data})
             else:
-                return jsonify({"data":None})    
+                return jsonify({"data":None})
         except:   
             print("查詢失敗")
         finally:
