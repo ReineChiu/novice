@@ -2,11 +2,21 @@ from flask import Flask, request, render_template, redirect, session, url_for, j
 import mysql.connector
 import os
 from mysql_data import MySQLPassword
+from mysql.connector import Error
+from mysql.connector import pooling
 
 app=Flask(__name__,)
 app.config["SECRET_KEY"] = os.urandom(24)
 app.config["JSON_AS_ASCII"] = False
 app.config['JSONIFY_MIMETYPE'] ="application/json;charset=utf-8"
+
+connection_pool = pooling.MySQLConnectionPool(pool_name ="pynative_pool",
+                                              pool_size = 5,
+                                              pool_reset_session = True,
+                                              host ="localhost",
+                                              database="website",
+                                              user="root",
+                                              password=MySQLPassword())
 
 @app.route("/")
 def index():
@@ -14,19 +24,13 @@ def index():
 
 @app.route("/signup",methods=["POST"])
 def signup():
-    connection = mysql.connector.connect(
-    host = "localhost",
-    port = "3306",
-    user = "root",
-    password = MySQLPassword(),
-    database = "website",
-    )
     name = request.form["name"]
     user = request.form["username"]
     password = request.form["password"]
 
     try:
-        cursor = connection.cursor()
+        connection_object = connection_pool.get_connection() 
+        cursor = connection_object.cursor()
         select=("select * from member where username= %(username)s")
         cursor.execute(select, {"username": user})
         account = cursor.fetchone()
@@ -44,26 +48,21 @@ def signup():
         print("signup錯誤")
     finally:
         cursor.close()
-        connection.close()
+        connection_object.close()
 
 @app.route("/signin",methods=["POST"])
 def signin():
-    connection = mysql.connector.connect(
-    host = "localhost",
-    port = "3306",
-    user = "root",
-    password = MySQLPassword(),
-    database = "website",
-    )
     user = request.form["username"]
     password = request.form["password"]
 
     try:
-        cursor = connection.cursor()
+        connection_object = connection_pool.get_connection() 
+        cursor = connection_object.cursor()
         select = ("select * from member where username= %s and password= %s")
         data = [user, password]
         cursor.execute(select, data)
         result = cursor.fetchone()
+      
         if result:
             session["userid"] = result[0]
             session["name"] = result[1]
@@ -72,54 +71,44 @@ def signin():
             return redirect(url_for("member")) 
         else: 
             return redirect(url_for("error",message = "帳號、或密碼輸入錯誤"))
+        
     except:   
         print("signin錯誤")
     finally:
         cursor.close()
-        connection.close()  
+        connection_object.close()  
 
 @app.route("/member")
 def member():
-    connection = mysql.connector.connect(
-    host = "localhost",
-    port = "3306",
-    user = "root",
-    password = MySQLPassword(),
-    database = "website",
-    )
     if "username" in session:
         name = session["name"]
         
         try:
-            cursor = connection.cursor()
+            connection_object = connection_pool.get_connection() 
+            cursor = connection_object.cursor()
             cursor.execute('''select member.username, message.content, message.time,
                                     member.id, message.member_id from member inner join message 
                                     on member.id=message.member_id order by message.time desc;''')
             message = cursor.fetchall()
             return render_template("member.html",name = name,message = message)
+            
         except:   
             print("顯示留言失敗")
         finally:
             cursor.close()
-            connection.close()
+            connection_object.close()
 
     else:
         return redirect("/")
 
 @app.route("/api/member", methods=["GET"])
 def api_member():
-    connection = mysql.connector.connect(
-    host = "localhost",
-    port = "3306",
-    user = "root",
-    password = MySQLPassword(),
-    database = "website",
-    )
     if "username" in session:
         username = request.args.get("username","")
         
         try:
-            cursor = connection.cursor()
+            connection_object = connection_pool.get_connection() 
+            cursor = connection_object.cursor()
             select = ("select id, name, username from member where username=%s")
             value = [username]
             cursor.execute(select, value)
@@ -129,76 +118,62 @@ def api_member():
                 data = dict(zip(columns, name))
                 return jsonify({"data":data})
             else:
-                return jsonify({"data":None})
+                return jsonify({"data":None})    
         except:   
             print("查詢失敗")
         finally:
             cursor.close()
-            connection.close()
-
+            connection_object.close()
     else:
         return jsonify({"data":None})
 
 @app.route("/api/member", methods=["PATCH"])
 def patch_member():
-    connection = mysql.connector.connect(
-    host = "localhost",
-    port = "3306",
-    user = "root",
-    password = MySQLPassword(),
-    database = "website",
-    )
     if "username" in session:
         data = request.get_json("name")
         memberId = session["userid"]
-        
+
         try:
-            cursor = connection.cursor()
+            connection_object = connection_pool.get_connection() 
+            cursor = connection_object.cursor()
             update = ("update member set name=%s where id=%s")
             value = [data["name"], memberId]
             cursor.execute(update, value)
-            connection.commit()
+            connection_object.commit()
 
             select = ("select * from member where name=%s")
-            result  =[data["name"]]
+            result = [data["name"]]
             cursor.execute(select, result)
             newName = cursor.fetchone()
             if newName:
                 return jsonify({"ok":True})
             else:
-                return jsonify({"error":True})
+                return jsonify({"error":True})    
         except:   
             print("更新失敗")
         finally:
             cursor.close()
-            connection.close()
-
+            connection_object.close()
     else:
         return jsonify({"error":True})
 
 @app.route("/message",methods=["POST"])
 def message():
-    connection = mysql.connector.connect(
-    host = "localhost",
-    port = "3306",
-    user = "root",
-    password = MySQLPassword(),
-    database = "website",
-    )
     memberId = session["userid"]
     content = request.form["mesgcontent"]
 
     try:
-        cursor = connection.cursor()
+        connection_object = connection_pool.get_connection() 
+        cursor = connection_object.cursor()
         insert = ("insert into message(memberId, content) values(%s, %s)")
         value=[memberId, content]
         cursor.execute(insert, value)
-        connection.commit()
+        connection.commit()    
     except:   
         print("新增留言失敗")
     finally:
         cursor.close()
-        connection.close()
+        connection_object.close()
 
     return redirect(url_for("member"))
     
